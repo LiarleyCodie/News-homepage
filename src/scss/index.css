@@ -1,0 +1,217 @@
+:root {
+  font-size: 62.5%;
+}
+
+img {
+  width: 100%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style-type: none;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Inter", sans-serif;
+  padding: 3rem 1.5rem;
+  background: hsl(36, 100%, 99%);
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.navbar .logo {
+  width: 15%;
+}
+.navbar .menu-handler {
+  display: none;
+}
+.navbar .menu-handler:checked ~ .overlay {
+  visibility: visible;
+}
+.navbar .menu-handler:checked ~ .list {
+  transform: translateX(-100%);
+}
+.navbar .menu-icon {
+  display: flex;
+  padding: 0.25rem;
+}
+.navbar .menu .overlay {
+  top: 0;
+  left: 0;
+  position: fixed;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+}
+.navbar .menu .list {
+  padding: 3rem 1.5rem;
+  display: flex;
+  align-items: end;
+  flex-direction: column;
+  font-size: 1.8rem;
+  position: fixed;
+  background: hsl(36, 100%, 99%);
+  height: 100%;
+  width: 70%;
+  right: -70%;
+  top: 0;
+  z-index: 2;
+}
+.navbar .menu .list li {
+  width: 100%;
+}
+.navbar .menu .list li:first-of-type {
+  margin-top: 4rem;
+}
+.navbar .menu .list li:not(:last-of-type) {
+  margin-bottom: 1.25rem;
+}
+.navbar .menu .list li .link {
+  display: flex;
+  width: 100%;
+  padding: 0.8rem;
+  color: hsl(240, 100%, 5%);
+}
+.navbar .menu .list li .link:hover {
+  color: hsl(5, 85%, 63%);
+}
+
+.main .section {
+  padding-top: 3rem;
+}
+.main .section .article .header .title {
+  color: hsl(240, 100%, 5%);
+  font-weight: 800;
+  font-size: 3.5rem;
+  line-height: 100%;
+  margin: 2rem 0;
+}
+.main .section .article .header .description-informations {
+  font-size: 1.4rem;
+  color: hsl(236, 13%, 42%);
+  line-height: 150%;
+}
+.main .section .article .header .description-button {
+  display: flex;
+  width: -moz-max-content;
+  width: max-content;
+  background: hsl(5, 85%, 63%);
+  margin: 2rem 0;
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: hsl(36, 100%, 99%);
+  padding: 1.6rem 3rem;
+  letter-spacing: 0.4rem;
+}
+.main .section .article .header .description-button:hover {
+  background: hsl(240, 100%, 5%);
+}
+.main .aside {
+  margin-top: 6rem;
+  padding: 2rem 2rem 0 2rem;
+  background: hsl(240, 100%, 5%);
+}
+.main .aside .title {
+  color: hsl(35, 77%, 62%);
+  font-size: 3rem;
+}
+.main .aside ul li {
+  padding: 1rem 0;
+}
+.main .aside ul li:not(:last-of-type) {
+  border-bottom: 1px solid hsl(233, 8%, 79%);
+}
+.main .aside ul li .article-link {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 0;
+}
+.main .aside ul li .article-link-subtitle {
+  margin-bottom: 0.8rem;
+  color: hsl(36, 100%, 99%);
+  font-size: 1.9rem;
+}
+.main .aside ul li .article-link-informations {
+  line-height: 170%;
+  font-size: 1.4rem;
+  color: hsl(233, 8%, 79%);
+}
+.main .aside ul li .article-link:hover .article-link-subtitle {
+  color: hsl(35, 77%, 62%);
+}
+.main .footer {
+  margin-top: 6rem;
+}
+.main .footer ul li {
+  display: flex;
+  align-items: center;
+}
+.main .footer ul li:not(:last-of-type) {
+  margin-bottom: 2rem;
+}
+.main .footer ul li .image {
+  display: flex;
+  margin-right: 2rem;
+  width: 100%;
+  max-width: 12rem;
+}
+.main .footer ul li .image img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center center;
+     object-position: center center;
+}
+.main .footer ul li .description .number {
+  font-size: 3.2rem;
+  color: hsl(233, 8%, 79%);
+}
+.main .footer ul li .description .link {
+  display: flex;
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: hsl(240, 100%, 5%);
+  padding: 0.5rem 0;
+}
+.main .footer ul li .description .informations {
+  font-size: 1.4rem;
+  color: hsl(236, 13%, 42%);
+  line-height: 170%;
+}
+
+@media screen and (min-width: 768px) {
+  body {
+    padding: 5rem 7rem;
+  }
+  .navbar .logo {
+    width: 6%;
+  }
+  .navbar .menu-icon {
+    display: none;
+  }
+  .navbar .menu .list {
+    position: static;
+    flex-direction: row;
+  }
+  .navbar .menu .list li {
+    width: 100%;
+  }
+  .navbar .menu .list li:first-of-type {
+    margin-top: 0;
+  }
+  .navbar .menu .list li:not(:last-of-type) {
+    margin-bottom: 0;
+    margin-right: 2rem;
+  }
+  .navbar .menu .list li .link {
+    color: hsl(236, 13%, 42%);
+  }
+}/*# sourceMappingURL=index.css.map */
