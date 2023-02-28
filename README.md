@@ -12,6 +12,8 @@ _You know, I enjoyed working on this project. I was able to work more on my skil
 
 :pencil: I designed the entire interface thinking about how it would look on a cell phone whose horizontal resolution would be 320px (Mobile first). Then I adjusted along the standard breakpoints.
 
+> :star: The interface has some transitions.
+
 ![Preview of the project in execution in the desktop version](https://i.imgur.com/Zzg8DfH.png)
 
 ![Preview of the project in execution in the mobile version](https://i.imgur.com/9nq0HCL.png)
