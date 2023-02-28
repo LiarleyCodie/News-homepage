@@ -19,6 +19,8 @@ $dark-grayish-blue: hsl(236, 13%, 42%);
 $very-dark-blue: hsl(240, 100%, 5%);
 $very-dark-blue-hover: hsl(240, 100%, 10%);
 
+$transition-duration: 150ms;
+
 * {
     margin: 0;
     padding: 0;
@@ -107,6 +109,8 @@ body {
                     padding: 0.8rem;
                     color: $very-dark-blue;
 
+                    transition: color $transition-duration ease;
+
                     &:hover {
                         color: $soft-red;
                     }
@@ -149,14 +153,37 @@ body {
                         height: max-content;
                         background: $soft-red;
                         margin-top: 2rem;
-                        font-weight: 700;
-                        font-size: 1.4rem;
-                        color: $off-white;
-                        padding: 1.6rem 3rem;
-                        letter-spacing: 0.4rem;
+                        padding: 0.4rem 3rem;
+                        
+                        position: relative;
 
-                        &:hover {
+                        transition-property: color, background;
+                        transition-duration: $transition-duration;
+                        transition-timing-function: ease;
+                        overflow: hidden;
+
+                        .title {
+                            font-weight: 700;
+                            font-size: 1.4rem;
+                            color: $off-white;
+                            letter-spacing: 0.4rem;
+                            z-index: 2;
+                            white-space: nowrap;
+                        }
+
+                        .hover-background {
+                            position: absolute;
                             background: $very-dark-blue;
+                            left: -120%;
+                            top: 0;
+                            width: 120%;
+                            height: 100%;
+                            z-index: 1;
+                            transition: transform $transition-duration ease;
+                        }
+
+                        &:hover > .hover-background {
+                            transform: translateX(100%);
                         }
                     }
                 }
@@ -168,6 +195,7 @@ body {
     .aside {
         padding: 2rem 2rem 0 2rem;
         background: $very-dark-blue;
+        height: max-content;
 
         .title {
             color: $soft-orange;
@@ -191,6 +219,7 @@ body {
                         margin-bottom: 0.8rem;
                         color: $off-white;
                         font-size: 1.9rem;
+                        transition: color $transition-duration ease;
                     }
 
                     &-informations {
@@ -245,6 +274,7 @@ body {
                         font-weight: 800;
                         color: $very-dark-blue;
                         padding: 0.5rem 0;
+                        transition: color $transition-duration ease;
 
                         &:hover {
                             color: $soft-red;
@@ -344,6 +374,7 @@ body {
         }
         .menu {
             .list {
+                padding: 6rem 4rem;
                 font-size: 4rem;
 
                 li {
@@ -446,11 +477,13 @@ body {
     }
 
     .navbar {
+        margin-bottom: 2rem;
+
         .logo {
             width: 6%;
         }
     
-        .menu {    
+        .menu {
             &-icon {
                 display: none;
             }
@@ -515,7 +548,7 @@ body {
             grid-area: aside;
     
             .title {
-                font-size: 3rem;
+                font-size: 4rem;
             }
     
             ul {
@@ -541,7 +574,7 @@ body {
                 columns: 3;
                 li {
                     display: flex;
-                    align-items: center;
+                    align-items: start;
                     .image {
                         width: 100%;
                         max-width: 10rem;
@@ -564,6 +597,142 @@ body {
     
                         .informations {
                             font-size: 1.4rem;
+                            color: $dark-grayish-blue;
+                            line-height: 170%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    body {
+        padding: 4rem 9rem;
+    }
+
+    .navbar {
+        margin-bottom: 3rem;
+
+        .logo {
+            width: 6%;
+        }
+    
+        .menu {
+            &-icon {
+                display: none;
+            }
+    
+            .list {
+                flex-direction: row;
+                font-size: 3rem;
+                position: static;
+    
+                li {
+                    &:first-of-type {
+                        margin-top: 0;
+                    }
+    
+                    &:not(:last-of-type) {
+                        margin-bottom: 0;
+                        margin-right: 1rem;
+                    }
+    
+                    .link {
+                        color: $dark-grayish-blue;
+                    }
+                }
+            }
+        }
+    }
+
+    .main {
+        display: grid;
+        grid-template-rows: auto auto;
+        grid-template-columns: 2fr 1fr;
+        grid-template-areas: "section aside"
+                             "footer footer";
+        grid-column-gap: 2rem;
+
+        .section {
+            padding-top: 0;
+            grid-area: section;
+    
+            .article {
+                .header {
+                    .title {
+                        font-size: 7rem;
+                        align-self: center;
+                    }
+    
+                    .description {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+    
+                        &-informations {
+                            font-size: 2rem;
+                        }
+                    }
+                }
+            }
+    
+        }
+    
+        .aside {
+            grid-area: aside;
+    
+            .title {
+                font-size: 6rem;
+            }
+    
+            ul {
+                li {
+    
+                    .article-link {
+                        &-subtitle {
+                            font-size: 2.3rem;
+                        }
+    
+                        &-informations {
+                            font-size: 2rem;
+                        }
+                    }
+                }
+            }
+        }
+    
+        .footer {
+            grid-area: footer;
+            
+            ul {
+                columns: 3;
+                li {
+                    display: flex;
+                    align-items: start;
+                    .image {
+                        width: 100%;
+                        max-width: 14rem;
+                    }
+    
+                    .description {
+                        .number {
+                            font-size: 4rem;
+                        }
+    
+                        .link {
+                            font-size: 3rem;
+                            width: 100%;
+                            padding: 0;
+    
+                            &:hover {
+                                color: $soft-red;
+                            }
+                        }
+    
+                        .informations {
+                            font-size: 2rem;
                             color: $dark-grayish-blue;
                             line-height: 170%;
                         }
